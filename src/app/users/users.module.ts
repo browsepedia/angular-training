@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users.routing-module';
 import { MatButtonModule } from '@angular/material/button';
-import { UserDataService } from './user.data-service';
 
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
@@ -21,6 +20,6 @@ import { UserFacade } from './user.facade';
     ReactiveFormsModule,
   ],
   declarations: [...UsersRoutingModule.components],
-  providers: [UserDataService, UserFacade],
+  providers: [UserFacade],
 })
 export class UsersModule {}

@@ -1,6 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { combineLatest, map, Observable, startWith } from 'rxjs';
+import {
+  debounceTime,
+  filter,
+  map,
+  mergeMap,
+  Observable,
+  startWith,
+  Subscription,
+  tap,
+} from 'rxjs';
 import { UserFacade } from './user.facade';
 import { User } from './user.model';
 
@@ -9,29 +18,34 @@ import { User } from './user.model';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnDestroy {
   constructor(private _userFacade: UserFacade) {
     this._userFacade.fetchUsers();
+
+    this.filteredUsers$ = this._userFacade.filteredUsers$;
+
+    this._searchTerm$ = this.searchCtrl.valueChanges
+      .pipe(
+        debounceTime(300),
+        tap((searchTerm: string) => this._userFacade.setUserFilter(searchTerm))
+      )
+      .subscribe();
+
+    // With parameter in selector
+    // this.filteredUsers$ = this.searchCtrl.valueChanges.pipe(
+    //   startWith(''),
+    //   mergeMap((searchTerm: string) =>
+    //     this._userFacade.getFilteredUsers(searchTerm)
+    //   )
+    // );
   }
 
   public filteredUsers$!: Observable<User[]>;
-  public searchCtrl = new FormControl();
+  public searchCtrl = new FormControl('');
 
-  ngOnInit(): void {
-    const search$ = this.searchCtrl.valueChanges.pipe(
-      startWith(''),
-      map((value: string) => value.toLowerCase())
-    );
+  private _searchTerm$: Subscription;
 
-    this.filteredUsers$ = combineLatest([
-      this._userFacade.users$,
-      search$,
-    ]).pipe(
-      map(([users, searchTerm]) =>
-        users.filter((user) =>
-          user.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      )
-    );
+  ngOnDestroy(): void {
+    this._searchTerm$.unsubscribe();
   }
 }
