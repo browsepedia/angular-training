@@ -1,8 +1,15 @@
 interface Employee {
-  firstName: string;
-  middleName: string;
-  lastName: string;
+  firstName?: string;
+  middleName?: string;
+  lastName?: string;
 }
+
+const employeeWithXp: Employee & { experience: number } = {
+  firstName: 'Vlad',
+  lastName: 'G',
+  middleName: 'N',
+  experience: 8,
+};
 
 type EmployeeListItem = Pick<Employee, 'firstName' | 'lastName' | 'middleName'>;
 
