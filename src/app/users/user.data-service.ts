@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from './user.model';
 
 @Injectable()
-export class UserService {
+export class UserDataService {
   constructor(private _httpClient: HttpClient) {}
 
   fetchUsers(): Observable<User[]> {
