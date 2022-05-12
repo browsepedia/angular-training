@@ -12,9 +12,8 @@ export class EmployeeNamePipe implements PipeTransform {
       firstName: string;
       lastName: string;
     },
-    args: string
+    args?: string
   ): string {
-    console.log('EmployeeNamePipe', args);
     return `${firstName} ${lastName}`;
   }
 }

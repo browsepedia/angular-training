@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-on-push-child',
@@ -11,8 +6,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OnPushChildComponent {
-  constructor(private _detectorRef: ChangeDetectorRef) {}
-
   @Input() public nums: number[] = [];
   @Input() public childId: string = '';
 
