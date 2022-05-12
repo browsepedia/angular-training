@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MultiplicatePipe } from './multiplicate.pipe';
 import { PreloadModule } from './preload-route';
 
+import './extending-array-prototype-and-type';
+
 @NgModule({
   declarations: [AppComponent, LayoutComponent, MultiplicatePipe],
   imports: [

@@ -7,3 +7,6 @@ import { PostsRoutingModule } from './posts.routing-module';
   declarations: [...PostsRoutingModule.components],
 })
 export class PostsModule {}
+
+// GET https://jsonplaceholder.typicode.com/posts
+// GIT URL https://github.com/browsepedia/angular-training
