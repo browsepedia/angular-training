@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-title>
-    {{childId}} - {{employee.firstName}}
+    {{childId}} - {{employee | employeeName:childId}}
   </mat-card-title>
   <div *ngFor="let num of allNums">
     {{num}}

@@ -14,12 +14,16 @@ export class ChildComponent {
   };
 
   public get allNums(): number[] {
-    console.log(this.nums, this.childId);
     return this.nums;
   }
 
-  public get empl(): number[] {
-    console.log(this.employee, this.childId);
-    return this.nums;
+  public get empl(): any {
+    console.log(this.childId);
+    return this.employee;
+  }
+
+  getFirstName(): string {
+    console.log(this.childId);
+    return `${this.employee.firstName} ${this.employee.lastName}`;
   }
 }

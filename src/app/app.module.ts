@@ -22,6 +22,7 @@ import { AppDataStoreModule } from './data-store';
 import { ChildComponent } from './child/child.component';
 import { MatCardModule } from '@angular/material/card';
 import { OnPushChildComponent } from './on-push-child/on-push-child.component';
+import { EmployeeNamePipe } from './employee-name.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { OnPushChildComponent } from './on-push-child/on-push-child.component';
     MultiplicatePipe,
     ChildComponent,
     OnPushChildComponent,
+    EmployeeNamePipe,
   ],
   imports: [
     MatCardModule,

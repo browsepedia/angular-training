@@ -21,18 +21,18 @@ export class OnPushChildComponent {
     lastName: string;
   };
 
-  logNums(): void {
-    console.log(this.nums);
-  }
+  logNums(): void {}
 
   public get allNums(): number[] {
-    console.log(this.nums, this.childId);
     return this.nums;
   }
 
-  public get empl(): number[] {
-    console.log(this.employee, this.childId);
-    return this.nums;
+  public get empl(): any {
+    return this.employee;
+  }
+
+  getFirstName(): string {
+    return `${this.employee.firstName} ${this.employee.lastName}`;
   }
 }
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OnHoverPreloadStrategy } from './preload-route';
+import { EmployeeNamePipe } from './employee-name.pipe';
 
 const routes: Routes = [
   {
