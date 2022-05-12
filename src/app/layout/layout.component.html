@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a routerLink="/users"
+       mat-button
+       (mouseover)="preloadRoute('users')"
+       href="javascript:void(0)">
+      Users
+    </a>
+
+    <a routerLink="/posts"
+       (mouseover)="preloadRoute('posts')"
+       mat-button
+       href="javascript:void(0)">
+      Posts
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<router-outlet></router-outlet>
