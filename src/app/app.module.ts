@@ -14,10 +14,10 @@ import { PreloadModule } from './preload-route';
 
 import './extending-array-prototype-and-type';
 import { StoreModule } from '@ngrx/store';
-import { UserEffects, usersReducer } from './store/user.store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { AppStoreModule } from './store';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent, MultiplicatePipe],
@@ -29,13 +29,9 @@ import { environment } from '../environments/environment';
     MatButtonModule,
     MatToolbarModule,
     HttpClientModule,
-    StoreModule.forRoot(
-      {
-        users: usersReducer,
-      },
-      {}
-    ),
-    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    AppStoreModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

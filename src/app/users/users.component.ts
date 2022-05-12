@@ -1,15 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {
-  debounceTime,
-  filter,
-  map,
-  mergeMap,
-  Observable,
-  startWith,
-  Subscription,
-  tap,
-} from 'rxjs';
+import { debounceTime, Observable, Subscription, tap } from 'rxjs';
 import { UserFacade } from './user.facade';
 import { User } from './user.model';
 
