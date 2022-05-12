@@ -2,14 +2,14 @@
   <mat-toolbar-row>
     <a routerLink="/users"
        mat-button
-       (mouseover)="preloadRoute('users')"
+       appPreload
        href="javascript:void(0)">
-      Users
+      <span>Users</span>
     </a>
 
     <a routerLink="/posts"
-       (mouseover)="preloadRoute('posts')"
        mat-button
+       appPreload
        href="javascript:void(0)">
       Posts
     </a>

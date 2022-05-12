@@ -10,9 +10,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { LayoutComponent } from './layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MultiplicatePipe } from './multiplicate.pipe';
+import { PreloadDirective } from './preload.directive';
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent, MultiplicatePipe],
+  declarations: [
+    AppComponent,
+    LayoutComponent,
+    MultiplicatePipe,
+    PreloadDirective,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
