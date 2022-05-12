@@ -17,10 +17,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { EntityDataModule, HttpUrlGenerator } from '@ngrx/data';
-import { entityConfig } from './entity-metadata';
 import { ApiUrlInterceptor } from './url.interceptor';
-import { PluralHttpUrlGenerator } from './plural-http-url-generator.provider';
+import { AppDataStoreModule } from './data-store';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent, MultiplicatePipe],
@@ -38,7 +36,7 @@ import { PluralHttpUrlGenerator } from './plural-http-url-generator.provider';
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EntityDataModule.forRoot(entityConfig),
+    AppDataStoreModule,
   ],
   providers: [
     {
@@ -46,7 +44,6 @@ import { PluralHttpUrlGenerator } from './plural-http-url-generator.provider';
       useClass: ApiUrlInterceptor,
       multi: true,
     },
-    { provide: HttpUrlGenerator, useClass: PluralHttpUrlGenerator },
   ],
 
   bootstrap: [AppComponent],

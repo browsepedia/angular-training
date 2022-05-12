@@ -1,23 +1,28 @@
 import { EntityMetadataMap, EntityDataModuleConfig } from '@ngrx/data';
-import { Post } from './posts/posts.model';
-import { User } from './users/user.model';
+import { Post } from '../posts/posts.model';
+import { User } from '../users/user.model';
+
+export enum DomainEntityNames {
+  Users = 'Users',
+  Posts = 'Posts',
+}
 
 const entityMetadata: EntityMetadataMap = {
-  Users: {
+  [DomainEntityNames.Users]: {
     selectId: (user: User) => user.id,
     filterFn: (users: User[], filter: string) =>
       users.filter((user) =>
         user.name.toLowerCase().includes(filter.toLowerCase())
       ),
   },
-  Posts: {
+  [DomainEntityNames.Posts]: {
     selectId: (post: Post) => post.id,
   },
 };
 
 const pluralNames = {
-  Users: 'Users',
-  Posts: 'Posts',
+  [DomainEntityNames.Users]: DomainEntityNames.Users,
+  [DomainEntityNames.Posts]: DomainEntityNames.Posts,
 };
 
 export const entityConfig: EntityDataModuleConfig = {

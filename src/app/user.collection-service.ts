@@ -3,6 +3,7 @@ import {
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory,
 } from '@ngrx/data';
+import { DomainEntityNames } from './data-store/entity-metadata';
 import { User } from './users/user.model';
 
 @Injectable({
@@ -10,6 +11,6 @@ import { User } from './users/user.model';
 })
 export class UserService extends EntityCollectionServiceBase<User> {
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super('Users', serviceElementsFactory);
+    super(DomainEntityNames.Users, serviceElementsFactory);
   }
 }

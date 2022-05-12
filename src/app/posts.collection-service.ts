@@ -3,6 +3,7 @@ import {
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory,
 } from '@ngrx/data';
+import { DomainEntityNames } from './data-store/entity-metadata';
 import { Post } from './posts/posts.model';
 
 @Injectable({
@@ -10,6 +11,6 @@ import { Post } from './posts/posts.model';
 })
 export class PostsService extends EntityCollectionServiceBase<Post> {
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super('Posts', serviceElementsFactory);
+    super(DomainEntityNames.Posts, serviceElementsFactory);
   }
 }
