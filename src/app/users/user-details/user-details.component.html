@@ -1,3 +1,14 @@
-<p>
-  user-details works!
-</p>
+<ng-container *ngIf="user">
+  <button mat-flat-button
+          color="primary"
+          [routerLink]="['../', user.id - 1]">
+    Previous
+  </button>
+
+  {{user.id}} - {{user.name}}
+  <button mat-flat-button
+          color="primary"
+          [routerLink]="['../', user.id + 1]">
+    Next
+  </button>
+</ng-container>

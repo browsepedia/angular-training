@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService } from '../posts.collection-service';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  styleUrls: ['./posts.component.scss'],
 })
 export class PostsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(_service: PostsService) {
+    _service.getAll().subscribe(console.log);
   }
 
+  ngOnInit() {}
 }

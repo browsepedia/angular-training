@@ -7,7 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UserFacade } from './user.facade';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -18,8 +18,9 @@ import { UserFacade } from './user.facade';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
   declarations: [...UsersRoutingModule.components],
-  providers: [UserFacade],
+  providers: [],
 })
 export class UsersModule {}

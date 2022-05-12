@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
+import { UserListComponent } from './user-list/user-list.component';
 import { UsersComponent } from './users.component';
 
 const routes: Route[] = [
@@ -7,6 +8,10 @@ const routes: Route[] = [
     path: '',
     component: UsersComponent,
     children: [
+      {
+        path: '',
+        component: UserListComponent,
+      },
       {
         path: 'user-details',
         loadChildren: () =>
@@ -23,5 +28,5 @@ const routes: Route[] = [
   exports: [RouterModule],
 })
 export class UsersRoutingModule {
-  public static components = [UsersComponent];
+  public static components = [UsersComponent, UserListComponent];
 }

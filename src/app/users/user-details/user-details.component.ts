@@ -4,7 +4,9 @@ import {
   ActivatedRouteSnapshot,
   Params,
 } from '@angular/router';
-import { filter, map } from 'rxjs';
+import { filter, map, mergeMap } from 'rxjs';
+import { UserService } from 'src/app/user.collection-service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-user-details',
@@ -12,12 +14,20 @@ import { filter, map } from 'rxjs';
   styleUrls: ['./user-details.component.scss'],
 })
 export class UserDetailsComponent implements OnInit, OnDestroy {
-  constructor(_route: ActivatedRoute) {
-    _route.data.subscribe(console.log);
-    _route.url.subscribe(console.log);
-
-    _route.snapshot.url;
+  constructor(_route: ActivatedRoute, _userService: UserService) {
+    _route.params
+      .pipe(
+        map((params: Params) => params['userId']),
+        filter((userId) => userId),
+        mergeMap((userId) => {
+          _userService.clearCache();
+          return _userService.getByKey(+userId);
+        })
+      )
+      .subscribe((user) => (this.user = user));
   }
+
+  public user: User | null = null;
 
   ngOnInit() {
     console.log('COMPONENT INITIALIZED');
