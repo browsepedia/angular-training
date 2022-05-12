@@ -19,10 +19,20 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ApiUrlInterceptor } from './url.interceptor';
 import { AppDataStoreModule } from './data-store';
+import { ChildComponent } from './child/child.component';
+import { MatCardModule } from '@angular/material/card';
+import { OnPushChildComponent } from './on-push-child/on-push-child.component';
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent, MultiplicatePipe],
+  declarations: [
+    AppComponent,
+    LayoutComponent,
+    MultiplicatePipe,
+    ChildComponent,
+    OnPushChildComponent,
+  ],
   imports: [
+    MatCardModule,
     PreloadModule,
     BrowserModule,
     AppRoutingModule,

@@ -1,1 +1,23 @@
 <app-layout></app-layout>
+
+<app-child [nums]="nums"
+           [employee]="employee"
+           childId="child1">
+</app-child>
+
+<app-on-push-child [nums]="nums"
+                   [employee]="employee"
+                   childId="child2">
+</app-on-push-child>
+
+<button mat-flat-button
+        color="primary"
+        (click)="addNum()">
+  Add to nums
+</button>
+
+<button mat-flat-button
+        color="primary"
+        (click)="changeName()">
+  Change name
+</button>
