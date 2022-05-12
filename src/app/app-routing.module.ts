@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OnHoverPreloadStrategy } from './preload-strategy';
-import { PreloadDirective } from './preload.directive';
+import { OnHoverPreloadStrategy } from './preload-route';
 
 const routes: Routes = [
   {

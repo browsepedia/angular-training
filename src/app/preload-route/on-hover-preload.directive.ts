@@ -4,12 +4,12 @@ import {
   HostBinding,
   HostListener,
 } from '@angular/core';
-import { OnHoverPreloadStrategy } from './preload-strategy';
+import { OnHoverPreloadStrategy } from './preload.strategy';
 
 @Directive({
   selector: '[appPreload]',
 })
-export class PreloadDirective {
+export class OnHoverPreloadDirective {
   constructor(
     private _elementRef: ElementRef,
     private _preloadStrategy: OnHoverPreloadStrategy
