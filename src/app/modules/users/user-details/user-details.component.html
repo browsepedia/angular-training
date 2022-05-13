@@ -55,7 +55,10 @@
     </mat-form-field>
 
   </div>
-  {{form.errors | json}}
+
+  <app-counter-input formControlName="yearsOfExperience"></app-counter-input>
+
+  <app-star-rating-field formControlName="review"></app-star-rating-field>
 
   <button mat-flat-button
           (click)="submitForm()"

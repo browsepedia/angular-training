@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CounterInputModule } from './counter-input/counter-input.module';
+import { StarRatingFieldModule } from './star-rating-field';
 
 const materialModules = [
   MatCardModule,
@@ -26,16 +28,20 @@ const materialModules = [
 @NgModule({
   imports: [
     CommonModule,
+    StarRatingFieldModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CounterInputModule,
     ...materialModules,
   ],
   exports: [
     CommonModule,
     MultiplicatePipe,
+    StarRatingFieldModule,
     EmployeeNamePipe,
     HttpClientModule,
     ReactiveFormsModule,
+    CounterInputModule,
     ...materialModules,
   ],
   declarations: [MultiplicatePipe, EmployeeNamePipe],

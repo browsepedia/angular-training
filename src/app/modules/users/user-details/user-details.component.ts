@@ -37,6 +37,8 @@ export class UserDetailsComponent {
       phone: [],
       username: [],
       website: [],
+      yearsOfExperience: [7],
+      review: [2.5],
       password: _formBuilder.group(
         {
           password: [''],
