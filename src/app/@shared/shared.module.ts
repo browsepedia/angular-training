@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CounterInputModule } from './counter-input/counter-input.module';
 import { StarRatingFieldModule } from './star-rating-field';
+import { NgxdModule } from '@ngxd/core';
 
 const materialModules = [
   MatCardModule,
@@ -34,6 +35,7 @@ const materialModules = [
     CounterInputModule,
     FormsModule,
     ...materialModules,
+    NgxdModule,
   ],
   exports: [
     CommonModule,
@@ -45,6 +47,7 @@ const materialModules = [
     ReactiveFormsModule,
     CounterInputModule,
     ...materialModules,
+    NgxdModule,
   ],
   declarations: [MultiplicatePipe, EmployeeNamePipe],
 })

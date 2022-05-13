@@ -1,23 +1,25 @@
 <div class="shadow-md p-4 bg-white">
-  <button (click)="show = !show"
-          mat-flat-button
-          color="primary">
-    Toggle
+  <button mat-button
+          color="primary"
+          (click)="childType = 0">
+    1
   </button>
 
-  <div *ngIf="show; else hidden">
-    Visible
-  </div>
+  <button mat-button
+          color="primary"
+          (click)="childType = 1">
+    2
+  </button>
 
-  <ng-container *ngTemplateOutlet="template"></ng-container>
+  <button mat-button
+          color="primary"
+          (click)="childType = 2">
+    3
+  </button>
+
+
+  <app-child-host [title]="title"
+                  [type]="childType"
+                  (hello)="logComponent($event)">
+  </app-child-host>
 </div>
-
-<ng-template #hidden>
-  <div>
-    Hidden
-  </div>
-</ng-template>
-
-<ng-template #template>
-  My super duper template
-</ng-template>
