@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs';
 import { UserService } from '@core';
@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RequiredValidator } from './required.validator';
 import { MinLengthValidator } from './min-length.validator';
 import { MatchFieldValueValidator } from './password-confirm.validator';
+import { CounterInputComponent } from '@shared/counter-input/counter-input.component';
 
 @Component({
   selector: 'app-user-details',
@@ -51,12 +52,13 @@ export class UserDetailsComponent {
     });
   }
 
+  @ViewChild('counterInput') public counterInput!: CounterInputComponent;
+
   public form: FormGroup;
 
   public review = 2.5;
 
   submitForm(): void {
-    console.log(this.review);
-    console.log(this.form.value);
+    console.log(this.counterInput.currentValue);
   }
 }

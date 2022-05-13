@@ -73,5 +73,7 @@
   </button>
 </form>
 
-<app-counter-input [value]="5"
-                   (change)="submitForm()"></app-counter-input>
+<app-counter-input #counterInput
+                   [value]="5"
+                   (change)="submitForm()">
+</app-counter-input>

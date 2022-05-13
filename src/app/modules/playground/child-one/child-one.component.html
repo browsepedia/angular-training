@@ -1,13 +1,14 @@
-<p>
-  child-one works!
-</p>
+<app-card-layout>
 
-<div>
-  {{title}}
-</div>
+  <span childTitle>child-one works!</span>
 
-<button mat-button
-        color="primary"
-        (click)="hello.emit('Child One')">
-  Hello
-</button>
+  <div>
+    {{title}}
+  </div>
+
+  <button mat-button
+          color="primary"
+          (click)="hello.emit('Child One')">
+    Hello
+  </button>
+</app-card-layout>
