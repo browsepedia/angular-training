@@ -6,14 +6,21 @@ import {
 } from '@angular/forms';
 
 export const MatchFieldValueValidator: (
+  firstFieldName: string,
   matchingFieldName: string
 ) => ValidatorFn =
-  (matchingFieldName: string): ValidatorFn =>
+  (firstFieldName: string, matchingFieldName: string): ValidatorFn =>
   (control: AbstractControl): ValidationErrors | null => {
-    if (control && control.parent && control.parent instanceof FormGroup) {
-      const passwordCtrl = control.parent.get(matchingFieldName);
+    console.log('RUNNING MatchFieldValueValidator');
+    if (control && control instanceof FormGroup) {
+      const formCtrl = control.get(firstFieldName);
+      const matchingFormCtrl = control.get(matchingFieldName);
 
-      if (passwordCtrl && passwordCtrl.value !== control.value) {
+      if (
+        formCtrl &&
+        matchingFormCtrl &&
+        formCtrl.value !== matchingFormCtrl.value
+      ) {
         return { missmatch: true };
       }
     }

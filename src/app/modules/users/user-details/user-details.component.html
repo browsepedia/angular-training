@@ -16,10 +16,6 @@
     </mat-error>
   </mat-form-field>
 
-  {{form.controls['email'].errors | json}}
-
-  {{form.errors | json}}
-
   <mat-form-field appearance="outline"
                   class="w-full">
     <label>Name</label>
@@ -43,24 +39,26 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="outline"
-                  class="w-full">
-    <label>Password</label>
-    <input matInput
-           formControlName="password" />
-  </mat-form-field>
+  <div formGroupName="password">
+    <mat-form-field appearance="outline"
+                    class="w-full">
+      <label>Password</label>
+      <input matInput
+             formControlName="password" />
+    </mat-form-field>
 
-  <mat-form-field appearance="outline"
-                  class="w-full">
-    <label>Confirm password</label>
-    <input matInput
-           formControlName="confirmPassword" />
-  </mat-form-field>
+    <mat-form-field appearance="outline"
+                    class="w-full">
+      <label>Confirm password</label>
+      <input matInput
+             formControlName="confirmPassword" />
+    </mat-form-field>
 
-  {{form.controls['confirmPassword'].errors | json}}
-
+  </div>
+  {{form.errors | json}}
 
   <button mat-flat-button
+          (click)="submitForm()"
           [disabled]="form.invalid"
           color="primary">
     Submit

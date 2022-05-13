@@ -31,19 +31,27 @@ export class UserDetailsComponent {
     this.form = _formBuilder.group({
       name: [
         '',
-        { validators: [MinLengthValidator(3), Validators.maxLength(10)] },
+        { validators: [MinLengthValidator(3), Validators.maxLength(25)] },
       ],
       email: ['', { validators: [Validators.email, RequiredValidator] }],
       phone: [],
       username: [],
       website: [],
-      password: [''],
-      confirmPassword: [
-        '',
-        { validators: [MatchFieldValueValidator('password')] },
-      ],
+      password: _formBuilder.group(
+        {
+          password: [''],
+          confirmPassword: [''],
+        },
+        {
+          validators: [MatchFieldValueValidator('password', 'confirmPassword')],
+        }
+      ),
     });
   }
 
   public form: FormGroup;
+
+  submitForm(): void {
+    console.log(this.form.value);
+  }
 }
