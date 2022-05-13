@@ -60,6 +60,11 @@
 
   <app-star-rating-field formControlName="review"></app-star-rating-field>
 
+  <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
+
+
   <button mat-flat-button
           (click)="submitForm()"
           [disabled]="form.invalid"
@@ -67,3 +72,6 @@
     Submit
   </button>
 </form>
+
+<app-counter-input [value]="5"
+                   (change)="submitForm()"></app-counter-input>

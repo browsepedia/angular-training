@@ -9,21 +9,41 @@
 
   <mat-list>
     <ng-container
-                  *ngFor="let user of filteredUsers$ | async; trackBy:trackById">
-      <mat-list-item>
-        <div class="w-full flex justify-between items-center">
-          <span>{{user.name}}</span>
-          <button mat-icon-button
-                  color="primary"
-                  [routerLink]="['user-details', user.id]">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </div>
-      </mat-list-item>
-
+                  *ngFor="let user of filteredUsers$ | async; trackBy:trackById; let index = index">
+      <ng-container [ngTemplateOutlet]="index % 2 === 0 ? evenListItem : oddListItem"
+                    [ngTemplateOutletContext]="{user: user}">
+      </ng-container>
       <mat-divider></mat-divider>
     </ng-container>
 
 
   </mat-list>
 </div>
+
+<ng-template #oddListItem
+             let-user="user">
+  <mat-list-item class="bg-slate-300">
+    <div class="w-full flex justify-between items-center ">
+      <span>{{user.name}}</span>
+      <button mat-icon-button
+              color="primary"
+              [routerLink]="['user-details', user.id]">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+</ng-template>
+
+<ng-template #evenListItem
+             let-user="user">
+  <mat-list-item>
+    <div class="w-full flex justify-between items-center">
+      <span>{{user.name}}</span>
+      <button mat-icon-button
+              color="primary"
+              [routerLink]="['user-details', user.id]">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+</ng-template>

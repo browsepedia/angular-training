@@ -53,7 +53,10 @@ export class UserDetailsComponent {
 
   public form: FormGroup;
 
+  public review = 2.5;
+
   submitForm(): void {
+    console.log(this.review);
     console.log(this.form.value);
   }
 }

@@ -1,0 +1,23 @@
+<div class="shadow-md p-4 bg-white">
+  <button (click)="show = !show"
+          mat-flat-button
+          color="primary">
+    Toggle
+  </button>
+
+  <div *ngIf="show; else hidden">
+    Visible
+  </div>
+
+  <ng-container *ngTemplateOutlet="template"></ng-container>
+</div>
+
+<ng-template #hidden>
+  <div>
+    Hidden
+  </div>
+</ng-template>
+
+<ng-template #template>
+  My super duper template
+</ng-template>

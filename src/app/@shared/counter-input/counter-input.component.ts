@@ -1,4 +1,10 @@
-import { Component, forwardRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -18,12 +24,18 @@ export class CounterInputComponent implements ControlValueAccessor {
   private _onChange!: (value: number) => void;
   private _onTouch!: () => void;
 
+  @Input() public set value(value: number) {
+    this.currentValue = value;
+  }
+
+  @Output() public change = new EventEmitter<number>();
+
   decrement(): void {
-    this._onChange(--this.currentValue);
+    this.emitNewValue(--this.currentValue);
   }
 
   increment(): void {
-    this._onChange(++this.currentValue);
+    this.emitNewValue(++this.currentValue);
   }
 
   writeValue(value: number): void {
@@ -36,5 +48,13 @@ export class CounterInputComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: () => void): void {
     this._onTouch = fn;
+  }
+
+  private emitNewValue(value: number): void {
+    if (this._onChange) {
+      this._onChange(value);
+    }
+
+    this.change.emit(value);
   }
 }

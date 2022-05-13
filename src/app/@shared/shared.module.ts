@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CounterInputModule } from './counter-input/counter-input.module';
 import { StarRatingFieldModule } from './star-rating-field';
 
@@ -32,12 +32,14 @@ const materialModules = [
     HttpClientModule,
     ReactiveFormsModule,
     CounterInputModule,
+    FormsModule,
     ...materialModules,
   ],
   exports: [
     CommonModule,
     MultiplicatePipe,
     StarRatingFieldModule,
+    FormsModule,
     EmployeeNamePipe,
     HttpClientModule,
     ReactiveFormsModule,
