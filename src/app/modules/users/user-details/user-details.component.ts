@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs';
 import { UserService } from '@core';
-import { User } from '@models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RequiredValidator } from './required.validator';
+import { MinLengthValidator } from './min-length.validator';
+import { MatchFieldValueValidator } from './password-confirm.validator';
 
 @Component({
   selector: 'app-user-details',
@@ -29,12 +31,17 @@ export class UserDetailsComponent {
     this.form = _formBuilder.group({
       name: [
         '',
-        { validators: [Validators.minLength(3), Validators.maxLength(10)] },
+        { validators: [MinLengthValidator(3), Validators.maxLength(10)] },
       ],
-      email: ['', { validators: [Validators.email, Validators.required] }],
+      email: ['', { validators: [Validators.email, RequiredValidator] }],
       phone: [],
       username: [],
       website: [],
+      password: [''],
+      confirmPassword: [
+        '',
+        { validators: [MatchFieldValueValidator('password')] },
+      ],
     });
   }
 
