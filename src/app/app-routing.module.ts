@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OnHoverPreloadStrategy } from './preload-route';
-import { EmployeeNamePipe } from './employee-name.pipe';
+import { OnHoverPreloadStrategy } from './@core/preload-route';
 
 const routes: Routes = [
   {
@@ -11,12 +10,12 @@ const routes: Routes = [
       {
         path: 'posts',
         loadChildren: () =>
-          import('./posts/posts.module').then((m) => m.PostsModule),
+          import('./modules/posts/posts.module').then((m) => m.PostsModule),
       },
       {
         path: 'users',
         loadChildren: () =>
-          import('./users/users.module').then((m) => m.UsersModule),
+          import('./modules/users/users.module').then((m) => m.UsersModule),
       },
     ],
   },

@@ -1,0 +1,42 @@
+<form class="shadow-md bg-white p-4"
+      [formGroup]="form">
+  <mat-form-field appearance="outline"
+                  class="w-full">
+    <label>Email</label>
+    <input matInput
+           formControlName="email" />
+
+    <mat-error
+               *ngIf="form.controls['email'].errors && form.controls['email'].errors['email']">
+      Must be an email
+    </mat-error>
+    <mat-error
+               *ngIf="form.controls['email'].errors && form.controls['email'].errors['required']">
+      Required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline"
+                  class="w-full">
+    <label>Name</label>
+    <input matInput
+           formControlName="name" />
+
+    <mat-error
+               *ngIf="form.controls['name'].errors && form.controls['name'].errors['maxlength']">
+      Name must be at most
+      {{form.controls['name'].errors['maxlength'].requiredLength}} characters,
+      currently {{form.controls['name'].errors['maxlength'].actualLength}}
+      characters
+    </mat-error>
+
+    <mat-error
+               *ngIf="form.controls['name'].errors && form.controls['name'].errors['minlength']">
+      Name must be atleast
+      {{form.controls['name'].errors['minlength'].requiredLength}} characters,
+      currently {{form.controls['name'].errors['minlength'].actualLength}}
+      characters
+    </mat-error>
+  </mat-form-field>
+
+</form>
